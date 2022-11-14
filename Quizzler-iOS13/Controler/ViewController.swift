@@ -7,6 +7,7 @@ class ViewController: UIViewController {
     @IBOutlet var questionLabel: UILabel!
     @IBOutlet weak var trueButton: UIButton!
     @IBOutlet weak var falseButton: UIButton!
+    @IBOutlet weak var scoreLabel: UILabel!
     
     var quizBrain = QuizBrain ()
     
@@ -30,7 +31,16 @@ class ViewController: UIViewController {
          
          */
         
-        let userAnswer = sender.currentTitle!
+        guard let userAnswer = sender.currentTitle else {
+            return
+          }
+        let userGotItRight = quizBrain.checkAnswer(userAnswer)
+        //    let userAnswer = sender.currentTitle!
+        
+        /*this one wont work now for me, howerver i made some search and i discovered the difference between correntLabel and currentTitle
+         
+//        let userAnswer = sender.currentLabel?.text ??""
+        */
         
         //this what i didn't understand, if its equal mean it == to boolean True
         
@@ -44,23 +54,27 @@ class ViewController: UIViewController {
          
          if quizBrain.checkAnswer(userAnswer) {
          */
-        if quizBrain.checkAnswer(userAnswer) == (sender.currentTitle != nil) {
+//        if quizBrain.checkAnswer(userAnswer) == (sender.currentTitle != nil) {
+//            sender.backgroundColor = UIColor.green
+//        }
+        if userGotItRight {
             sender.backgroundColor = UIColor.green
         }
-        // but if its not equal its mean its return false and its == to nil
         else{
             sender.backgroundColor = UIColor.red
         }
+        
         quizBrain.nextQuestion()
         
         Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector (updateUI), userInfo: nil, repeats: false)
         
     }
     @objc func updateUI() {
-        questionLabel.text = quizBrain.quiz [quizBrain.questionNumber].text
+        questionLabel.text = quizBrain.getQuestionText()
         trueButton.backgroundColor = UIColor.clear
         falseButton.backgroundColor = UIColor.clear
-        progressBar.progress = Float(quizBrain.questionNumber + 1) / Float(quizBrain.quiz.count)
+        progressBar.progress = quizBrain.getProgress()
+        scoreLabel.text = "Score: \(quizBrain.getScore())"
         
     }
 }

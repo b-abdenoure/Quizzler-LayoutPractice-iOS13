@@ -16,6 +16,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AQh-vn-HcB">
+                                <rect key="frame" x="10" y="54" width="49" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="500" verticalCompressionResistancePriority="1000" fixedFrame="YES" image="Background-Bubbles" translatesAutoresizingMaskIntoConstraints="NO" id="eGL-jB-Wwb">
                                 <rect key="frame" x="0.0" y="794" width="414" height="102"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -62,11 +68,16 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="0.14509803921568626" green="0.17254901960784313" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="AQh-vn-HcB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="wI6-96-aXa"/>
+                            <constraint firstItem="AQh-vn-HcB" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="wcu-CB-exH"/>
+                        </constraints>
                     </view>
                     <connections>
                         <outlet property="falseButton" destination="tbn-vQ-GyC" id="VcZ-1L-Lcc"/>
                         <outlet property="progressBar" destination="TXm-qh-7Xg" id="gte-qW-0xt"/>
                         <outlet property="questionLabel" destination="rSI-li-mhO" id="JjB-Nc-UWo"/>
+                        <outlet property="scoreLabel" destination="AQh-vn-HcB" id="67N-vl-AKh"/>
                         <outlet property="trueButton" destination="oVw-Hl-IRe" id="suL-AR-UYD"/>
                     </connections>
                 </viewController>
